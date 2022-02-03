@@ -40,61 +40,69 @@ const RegisterPage = () => {
             </p>
           </div>
 
-          <form className={styles["form-section"]}>
-            <CustomInput
-              className={styles["form-input"]}
-              type="text"
-              label="First Name"
-              handleChange={onChangeHandler}
-              name="firstName"
-              value={state.firstName}
-            />
-            <CustomInput
-              className={styles["form-input"]}
-              type="text"
-              label="Last Name"
-              handleChange={onChangeHandler}
-              name="lastName"
-              value={state.lastName}
-            />
-            <CustomInput
-              className={styles["form-input"]}
-              type="text"
-              label="Phone Number"
-              handleChange={onChangeHandler}
-              name="phoneNumber"
-              value={state.phoneNumber}
-            />
-            <CustomInput
-              className={styles["form-input"]}
-              type="text"
-              label="Email"
-              handleChange={onChangeHandler}
-              name="email"
-              value={state.email}
-            />
-            <CustomInput
-              className={styles["form-input"]}
-              type="text"
-              label="Password"
-              handleChange={onChangeHandler}
-              name="password"
-              value={state.password}
-            />
-            <CustomInput
-              className={styles["form-input"]}
-              type="text"
-              label="Confirm Password"
-              handleChange={onChangeHandler}
-              name="confirmPassword"
-              value={state.confirmPassword}
-            />
-            {/* <div className = {}>
-              <input type="checkbox" />
-              <label> Yes, I want to receive Lottery Display emails</label>
-            </div> */}
-            <CustomButton>Create Account</CustomButton>
+          <form>
+            <div className={styles["form-section"]}>
+              <CustomInput
+                type="text"
+                label="First Name"
+                handleChange={onChangeHandler}
+                name="firstName"
+                value={state.firstName}
+              />
+              <CustomInput
+                type="text"
+                label="Last Name"
+                handleChange={onChangeHandler}
+                name="lastName"
+                value={state.lastName}
+              />
+              <CustomInput
+                type="text"
+                label="Phone Number"
+                handleChange={onChangeHandler}
+                name="phoneNumber"
+                value={state.phoneNumber}
+              />
+              <CustomInput
+                type="text"
+                label="Email"
+                handleChange={onChangeHandler}
+                name="email"
+                value={state.email}
+              />
+              <CustomInput
+                type="text"
+                label="Password"
+                handleChange={onChangeHandler}
+                name="password"
+                value={state.password}
+              />
+              <CustomInput
+                type="text"
+                label="Confirm Password"
+                handleChange={onChangeHandler}
+                name="confirmPassword"
+                value={state.confirmPassword}
+              />
+            </div>
+
+            <div className={styles.action}>
+              <div className={styles["check-box"]}>
+                <input type="checkbox" />
+                <label> Yes, I want to receive Lottery Display emails</label>
+              </div>
+              <div className={styles["check-box"]}>
+                <input type="checkbox" />
+                <label>
+                  {" "}
+                  I agree to all the <span>Terms, Privacy Policy</span> and{" "}
+                  <span>Fees</span>
+                </label>
+              </div>
+              <CustomButton>Create Account</CustomButton>
+            </div>
           </form>
+
           <div className={styles["log-in"]}>
             <p>
               Already have an account? <span>Log in</span>{" "}

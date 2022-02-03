@@ -1,17 +1,17 @@
-label {
+.label {
   color: #000033;
   font-weight: normal;
 }
-input {
+.input {
   height: 30px;
   margin-top: 5px;
   width: 100%;
-  border: 1px solid #3a4750;
+  border: 1px solid #9d9d9d;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px #ededed;
 }
 
-input:focus {
+.input:focus {
   border: 1px solid #000033;
 }
 
