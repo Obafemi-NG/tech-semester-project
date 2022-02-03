@@ -1,0 +1,20 @@
+label {
+  color: #000033;
+  font-weight: normal;
+}
+input {
+  height: 30px;
+  margin-top: 5px;
+  width: 100%;
+  border: 1px solid #3a4750;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px #ededed;
+}
+
+input:focus {
+  border: 1px solid #000033;
+}
+
+.form-input {
+  padding: 20px 20px 0 0;
+}

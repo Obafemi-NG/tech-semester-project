@@ -1,0 +1,71 @@
+.register-page {
+  display: flex;
+}
+.lottery-display {
+  background-color: blue;
+  color: white;
+  width: 30%;
+  height: 100%;
+  position: fixed;
+  opacity: 0.9;
+  padding-left: 30px;
+}
+
+.lottery-display h5 {
+  padding-top: 40px;
+  font-weight: bolder;
+}
+
+.lottery-display h2 {
+  font-weight: normal;
+  padding-top: 80px;
+  text-align: left;
+  width: 75%;
+}
+
+.register-section {
+  margin: auto;
+  margin-top: 90px;
+  padding: 40px;
+  padding-left: 400px;
+}
+
+.title .sub-title {
+  color: #000033;
+}
+
+.title {
+  font-size: 22px;
+}
+
+.sub-title {
+  width: 70%;
+}
+
+.sub-title h5 {
+  margin-bottom: 0;
+  padding-top: 20px;
+}
+
+.register-section p {
+  color: #476072;
+}
+
+.form-section {
+  margin-top: 40px;
+  border-top: 1px solid #ededed;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.log-in {
+  font-weight: bold;
+}
+
+.log-in span {
+  color: blue;
+}
+
+.log-in span:hover {
+  cursor: pointer;
+}
