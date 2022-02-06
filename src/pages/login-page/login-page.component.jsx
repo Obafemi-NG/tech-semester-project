@@ -1,5 +1,8 @@
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { userActions } from "../../store/user/user.slice";
 
 import CustomButton from "../../UI/custom-button/custom-button.ui";
 import CustomInput from "../../UI/custom-input/custom-input.ui";
@@ -7,24 +10,32 @@ import CustomInput from "../../UI/custom-input/custom-input.ui";
 import styles from "./login-page.module.css";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  // const userDetails = useSelector((state) => state.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
+
+  // const [isFormValid, setIsFormValid] = useState(false);
 
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/register");
   };
 
+  const emailChangeHandler = (e) => {
+    setEmail(e.target.value);
+  };
+  const passwordChangeHandler = (e) => {
+    setPassword(e.target.value);
+  };
   const submitHandler = (e) => {
     e.preventDefault();
-    if (email.includes("@") && password.trim().length > 7) {
-      setIsFormValid(true);
-      console.log(email, password);
-    }
+    console.log({ email, password });
+    dispatch(userActions.onLogin({ email, password }));
     setEmail("");
     setPassword("");
   };
+
   return (
     <Fragment>
       <div className={styles["login-container"]}>
@@ -44,16 +55,16 @@ const LoginPage = () => {
             type="text"
             placeholder="Email or Phone Number"
             name="username"
-            handleChange={(e) => setEmail(e.target.value)}
             value={email}
+            handleChange={emailChangeHandler}
           />
           <CustomInput
             label="Password"
             type="text"
             placeholder="Password"
             name="password"
-            handleChange={(e) => setPassword(e.target.value)}
             value={password}
+            handleChange={passwordChangeHandler}
           />
           <div className={styles["remember-user"]}>
             <input type="checkbox" />

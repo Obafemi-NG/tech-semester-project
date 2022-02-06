@@ -53,9 +53,6 @@ img {
 }
 
 .register-btn:hover {
-  background-color: white;
-  color: blue;
-  border: 1px solid blue;
   cursor: pointer;
 }
 
@@ -70,8 +67,5 @@ img {
   font-size: 14px;
 }
 .login-btn:hover {
-  background-color: blue;
-  color: white;
-  border: none;
   cursor: pointer;
 }
