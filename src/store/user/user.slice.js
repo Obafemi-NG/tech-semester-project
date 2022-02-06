@@ -1,28 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_USER_STATE = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-  firstName: "",
-  lastName: "",
-  phoneNumber: "",
+  user: [],
 };
 const userSlice = createSlice({
   name: "user",
   initialState: INITIAL_USER_STATE,
   reducers: {
     onLogin(state, action) {
-      state.email = action.payload.email;
-      state.password = action.payload.password;
+      state.user = action.payload;
     },
     onRegister(state, action) {
-      state.email = action.payload.email;
-      state.password = action.payload.password;
-      state.confirmPassword = action.payload.confirmPassword;
-      state.firstName = action.payload.firstName;
-      state.lastName = action.payload.lastName;
-      state.phoneNumber = action.payload.phoneNumber;
+      state.user = action.payload;
     },
   },
 });
