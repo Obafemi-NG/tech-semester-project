@@ -1,0 +1,77 @@
+.image-container {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+img {
+  width: 60%;
+  /* height: 50%; */
+}
+
+.message {
+  text-align: center;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  padding-top: 40px;
+}
+
+.title {
+  color: blue;
+  font-size: 24px;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.subtitle {
+  color: #9d9d9d;
+  font-size: 16px;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.action {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  padding: 20px;
+}
+
+.register-btn {
+  background-color: blue;
+  border: none;
+  width: 150px;
+  border-radius: 5px;
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.register-btn:hover {
+  background-color: white;
+  color: blue;
+  border: 1px solid blue;
+  cursor: pointer;
+}
+
+.login-btn {
+  background-color: white;
+  border: 1px solid blue;
+  width: 150px;
+  border-radius: 5px;
+  color: blue;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.login-btn:hover {
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
