@@ -1,5 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { userActions } from "../../store/user/user.slice";
 
 import CustomButton from "../../UI/custom-button/custom-button.ui";
 import CustomInput from "../../UI/custom-input/custom-input.ui";
@@ -7,16 +10,39 @@ import CustomInput from "../../UI/custom-input/custom-input.ui";
 import styles from "./register-page.module.css";
 
 const RegisterPage = (props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/login");
   };
+
+  const [newUser, setNewUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phoneNumber: "",
+  });
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
+    setNewUser((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(newUser);
+    dispatch(
+      userActions.onRegister({
+        email: newUser.email,
+        password: newUser.password,
+        confirmPassword: newUser.confirmPassword,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        phoneNumber: newUser.phoneNumber,
+      })
+    );
   };
 
   return (
@@ -45,42 +71,42 @@ const RegisterPage = (props) => {
                 label="First Name"
                 handleChange={onChangeHandler}
                 name="firstName"
-                value={props.firstName}
+                value={newUser.firstName}
               />
               <CustomInput
                 type="text"
                 label="Last Name"
                 handleChange={onChangeHandler}
                 name="lastName"
-                value={props.lastName}
+                value={newUser.lastName}
               />
               <CustomInput
                 type="text"
                 label="Phone Number"
                 handleChange={onChangeHandler}
                 name="phoneNumber"
-                value={props.phoneNumber}
+                value={newUser.phoneNumber}
               />
               <CustomInput
                 type="text"
                 label="Email"
                 handleChange={onChangeHandler}
                 name="email"
-                value={props.email}
+                value={newUser.email}
               />
               <CustomInput
                 type="text"
                 label="Password"
                 handleChange={onChangeHandler}
                 name="password"
-                value={props.password}
+                value={newUser.password}
               />
               <CustomInput
                 type="text"
                 label="Confirm Password"
                 handleChange={onChangeHandler}
                 name="confirmPassword"
-                value={props.confirmPassword}
+                value={newUser.confirmPassword}
               />
             </div>
 
