@@ -1,24 +1,22 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CustomButton from "../../UI/custom-button/custom-button.ui";
 import CustomInput from "../../UI/custom-input/custom-input.ui";
 
 import styles from "./register-page.module.css";
 
-const RegisterPage = () => {
-  const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+const RegisterPage = (props) => {
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/login");
+  };
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-    setState({
-      [name]: value,
-    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -40,49 +38,49 @@ const RegisterPage = () => {
             </p>
           </div>
 
-          <form>
+          <form onSubmit={submitHandler}>
             <div className={styles["form-section"]}>
               <CustomInput
                 type="text"
                 label="First Name"
                 handleChange={onChangeHandler}
                 name="firstName"
-                value={state.firstName}
+                value={props.firstName}
               />
               <CustomInput
                 type="text"
                 label="Last Name"
                 handleChange={onChangeHandler}
                 name="lastName"
-                value={state.lastName}
+                value={props.lastName}
               />
               <CustomInput
                 type="text"
                 label="Phone Number"
                 handleChange={onChangeHandler}
                 name="phoneNumber"
-                value={state.phoneNumber}
+                value={props.phoneNumber}
               />
               <CustomInput
                 type="text"
                 label="Email"
                 handleChange={onChangeHandler}
                 name="email"
-                value={state.email}
+                value={props.email}
               />
               <CustomInput
                 type="text"
                 label="Password"
                 handleChange={onChangeHandler}
                 name="password"
-                value={state.password}
+                value={props.password}
               />
               <CustomInput
                 type="text"
                 label="Confirm Password"
                 handleChange={onChangeHandler}
                 name="confirmPassword"
-                value={state.confirmPassword}
+                value={props.confirmPassword}
               />
             </div>
 
@@ -105,7 +103,8 @@ const RegisterPage = () => {
 
           <div className={styles["log-in"]}>
             <p>
-              Already have an account? <span>Log in</span>{" "}
+              Already have an account?{" "}
+              <span onClick={handleNavigate}>Log in</span>{" "}
             </p>
           </div>
         </div>

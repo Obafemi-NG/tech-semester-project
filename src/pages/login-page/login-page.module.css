@@ -26,20 +26,18 @@
 }
 
 .sub-title p {
+  font-size: 14px;
   color: #9d9d9d;
 }
 
 .remember-user {
+  font-size: 14px;
   padding-top: 15px;
   color: #9d9d9d;
 }
 
 .action {
   margin-top: 10px;
-}
-
-.footer {
-  font-weight: bold;
 }
 
 .footer span {

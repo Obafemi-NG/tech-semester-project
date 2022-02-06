@@ -1,18 +1,29 @@
 import { Fragment, useState } from "react";
-import styles from "./login-page.module.css";
+import { useNavigate } from "react-router-dom";
+
 import CustomButton from "../../UI/custom-button/custom-button.ui";
 import CustomInput from "../../UI/custom-input/custom-input.ui";
 
+import styles from "./login-page.module.css";
+
 const LoginPage = () => {
-  const [state, setState] = useState({
-    email: "",
-    password: "",
-  });
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setState({
-      [name]: value,
-    });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/register");
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (email.includes("@") && password.trim().length > 7) {
+      setIsFormValid(true);
+      console.log(email, password);
+    }
+    setEmail("");
+    setPassword("");
   };
   return (
     <Fragment>
@@ -27,22 +38,22 @@ const LoginPage = () => {
             the best. Please enter your Login details.
           </p>
         </div>
-        <form>
+        <form onSubmit={submitHandler}>
           <CustomInput
             label="Username"
             type="text"
             placeholder="Email or Phone Number"
             name="username"
-            handleChange={onChangeHandler}
-            value={state.email}
+            handleChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
           <CustomInput
             label="Password"
             type="text"
             placeholder="Password"
             name="password"
-            handleChange={onChangeHandler}
-            value={state.password}
+            handleChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
           <div className={styles["remember-user"]}>
             <input type="checkbox" />
@@ -54,7 +65,8 @@ const LoginPage = () => {
         </form>
         <div className={styles.footer}>
           <p>
-            Do not have an account ? <span>Create an account</span>
+            Do not have an account ?{" "}
+            <span onClick={handleNavigate}>Create an account</span>
           </p>
         </div>
       </div>

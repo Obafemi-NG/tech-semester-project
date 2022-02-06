@@ -13,6 +13,7 @@
 
 .input:focus {
   border: 1px solid #000033;
+  background-color: #d6e5fa;
 }
 
 .form-input {
