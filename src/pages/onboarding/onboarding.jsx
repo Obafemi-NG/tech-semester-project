@@ -1,8 +1,18 @@
 import { Fragment } from "react";
-import styles from "./onboarding.module.css";
+import { useNavigate } from "react-router-dom";
+
 import onboarding from "../../assets/tech_semester_onboarding.png";
 
+import styles from "./onboarding.module.css";
+
 const Onboarding = () => {
+  const navigate = useNavigate();
+  const registerHandler = () => {
+    navigate("/register");
+  };
+  const loginHandler = () => {
+    navigate("/login");
+  };
   return (
     <Fragment>
       <div className={styles["image-container"]}>
@@ -20,9 +30,11 @@ const Onboarding = () => {
       </div>
       <div className={styles.action}>
         <div className={styles.btn}>
-          <button className={styles["register-btn"]}>Register</button>
+          <button onClick={registerHandler} className={styles["register-btn"]}>
+            Register
+          </button>
         </div>
-        <div className={styles.btn}>
+        <div onClick={loginHandler} className={styles.btn}>
           <button className={styles["login-btn"]}>Login</button>
         </div>
       </div>
