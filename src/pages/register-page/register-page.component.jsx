@@ -43,6 +43,14 @@ const RegisterPage = (props) => {
         phoneNumber: newUser.phoneNumber,
       })
     );
+    setNewUser({
+      email: "",
+      password: "",
+      confirmPassword: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+    });
   };
 
   return (
