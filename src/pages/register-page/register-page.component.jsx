@@ -9,7 +9,7 @@ import CustomInput from "../../UI/custom-input/custom-input.ui";
 
 import styles from "./register-page.module.css";
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -24,15 +24,26 @@ const RegisterPage = (props) => {
     confirmPassword: "",
     phoneNumber: "",
   });
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [formIsTouched, setFormIsTouched] = useState(false);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setNewUser((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const formIsInvalid = !isFormValid && formIsTouched;
+
   const submitHandler = (e) => {
     e.preventDefault();
+    setFormIsTouched(true);
+
+    if (newUser.email.includes("@") && newUser.password.trim().length > 6) {
+      setIsFormValid(true);
+      return;
+    }
     console.log(newUser);
+
     dispatch(
       userActions.onRegister({
         email: newUser.email,
@@ -117,6 +128,11 @@ const RegisterPage = (props) => {
                 value={newUser.confirmPassword}
               />
             </div>
+            {formIsInvalid && (
+              <p style={{ color: "red", fontSize: 14 }}>
+                Input Valid credentials
+              </p>
+            )}
 
             <div className={styles.action}>
               <div className={styles["check-box"]}>

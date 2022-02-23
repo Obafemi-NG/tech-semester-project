@@ -16,6 +16,8 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [formIsTouched, setFormIsTouched] = useState(false);
 
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -29,8 +31,17 @@ const LoginPage = () => {
       [name]: value,
     }));
   };
+
+  const onBlurHandler = () => {
+    setFormIsTouched(true);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
+    setFormIsTouched(true);
+    if (user.email.includes("@") && user.password.trim().length > 6) {
+      setIsFormValid(true);
+    }
     console.log(user);
     dispatch(
       userActions.onLogin({ email: user.email, password: user.password })
@@ -40,6 +51,8 @@ const LoginPage = () => {
       password: "",
     });
   };
+
+  const formIsInvalid = !isFormValid && formIsTouched;
 
   return (
     <Fragment>
@@ -62,6 +75,7 @@ const LoginPage = () => {
             name="email"
             value={user.email}
             handleChange={onChangeHandler}
+            onBlur={onBlurHandler}
           />
           <CustomInput
             label="Password"
@@ -70,11 +84,17 @@ const LoginPage = () => {
             name="password"
             value={user.password}
             handleChange={onChangeHandler}
+            onBlur={onBlurHandler}
           />
           <div className={styles["remember-user"]}>
             <input type="checkbox" />
             <label> Remember Me</label>
           </div>
+          {formIsInvalid && (
+            <p style={{ color: "red", fontSize: 12 }}>
+              Provided E-mail or Password invalid.{" "}
+            </p>
+          )}
           <div className={styles.action}>
             <CustomButton>Login</CustomButton>
           </div>
