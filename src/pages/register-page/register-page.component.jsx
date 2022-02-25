@@ -32,7 +32,12 @@ const RegisterPage = () => {
     setNewUser((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const onBlurHandler = () => {
+    setFormIsTouched(true);
+  };
+
   const formIsInvalid = !isFormValid && formIsTouched;
+  const invalidInput = formIsTouched ? `${styles.invalid}` : "";
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -91,6 +96,8 @@ const RegisterPage = () => {
                 handleChange={onChangeHandler}
                 name="firstName"
                 value={newUser.firstName}
+                onBlur={onBlurHandler}
+                styleName={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -98,6 +105,8 @@ const RegisterPage = () => {
                 handleChange={onChangeHandler}
                 name="lastName"
                 value={newUser.lastName}
+                onBlur={onBlurHandler}
+                styleName={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -105,6 +114,8 @@ const RegisterPage = () => {
                 handleChange={onChangeHandler}
                 name="phoneNumber"
                 value={newUser.phoneNumber}
+                onBlur={onBlurHandler}
+                styleName={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -112,6 +123,8 @@ const RegisterPage = () => {
                 handleChange={onChangeHandler}
                 name="email"
                 value={newUser.email}
+                onBlur={onBlurHandler}
+                styleName={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -119,6 +132,8 @@ const RegisterPage = () => {
                 handleChange={onChangeHandler}
                 name="password"
                 value={newUser.password}
+                onBlur={onBlurHandler}
+                styleName={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -126,6 +141,8 @@ const RegisterPage = () => {
                 handleChange={onChangeHandler}
                 name="confirmPassword"
                 value={newUser.confirmPassword}
+                onBlur={onBlurHandler}
+                styleName={invalidInput}
               />
             </div>
             {formIsInvalid && (

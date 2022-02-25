@@ -47,3 +47,8 @@
 .footer span:hover {
   cursor: pointer;
 }
+
+.invalid {
+  background-color: rgb(243, 188, 188);
+  border: 1px solid red;
+}

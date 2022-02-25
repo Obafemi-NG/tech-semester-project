@@ -36,6 +36,8 @@ const LoginPage = () => {
     setFormIsTouched(true);
   };
 
+  const invalidInput = formIsTouched ? `${styles.invalid}` : "";
+
   const submitHandler = (e) => {
     e.preventDefault();
     setFormIsTouched(true);
@@ -76,6 +78,7 @@ const LoginPage = () => {
             value={user.email}
             handleChange={onChangeHandler}
             onBlur={onBlurHandler}
+            styleName={invalidInput}
           />
           <CustomInput
             label="Password"
@@ -85,6 +88,7 @@ const LoginPage = () => {
             value={user.password}
             handleChange={onChangeHandler}
             onBlur={onBlurHandler}
+            styleName={invalidInput}
           />
           <div className={styles["remember-user"]}>
             <input type="checkbox" />

@@ -4,7 +4,11 @@ const CustomInput = ({ handleChange, label, ...otherProps }) => {
   return (
     <div className={styles["form-input"]}>
       <label className={styles.label}> {label} </label>
-      <input className={styles.input} onChange={handleChange} {...otherProps} />
+      <input
+        className={`${styles.input} ${otherProps.styleName}`}
+        onChange={handleChange}
+        {...otherProps}
+      />
     </div>
   );
 };
