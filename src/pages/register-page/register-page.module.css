@@ -84,6 +84,11 @@ span:hover {
 }
 
 .invalid {
-  background-color: rgb(243, 188, 188);
-  border: 1px solid red;
+  border: 1px solid #b40e0e;
+  background-color: #fddddd;
+}
+
+.invalid:focus {
+  border-color: #ff8800;
+  background-color: #fbe8d2;
 }

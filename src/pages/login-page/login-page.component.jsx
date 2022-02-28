@@ -95,7 +95,7 @@ const LoginPage = () => {
             <label> Remember Me</label>
           </div>
           {formIsInvalid && (
-            <p style={{ color: "red", fontSize: 12 }}>
+            <p style={{ color: "#b40e0e", fontSize: 12 }}>
               Provided E-mail or Password invalid.{" "}
             </p>
           )}

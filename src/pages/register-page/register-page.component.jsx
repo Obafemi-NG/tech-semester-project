@@ -146,7 +146,7 @@ const RegisterPage = () => {
               />
             </div>
             {formIsInvalid && (
-              <p style={{ color: "red", fontSize: 14 }}>
+              <p style={{ color: "#b40e0e", fontSize: 14 }}>
                 Input Valid credentials
               </p>
             )}
