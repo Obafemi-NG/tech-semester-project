@@ -39,16 +39,34 @@ const RegisterPage = () => {
   const formIsInvalid = !isFormValid && formIsTouched;
   const invalidInput = formIsTouched ? `${styles.invalid}` : "";
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setFormIsTouched(true);
 
     if (newUser.email.includes("@") && newUser.password.trim().length > 6) {
       setIsFormValid(true);
+    } else {
+      alert(
+        "Enter a Valid E-mail address or Password. Password must contain more than six characters."
+      );
       return;
     }
-    console.log(newUser);
-
+    const url =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCQESQ0wHaizaaA8I8x6gBfd2FapnSBkWk";
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: newUser.email,
+        password: newUser.password,
+        returnSecureToken: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      alert("Authentication Failed!");
+    }
     dispatch(
       userActions.onRegister({
         email: newUser.email,
@@ -59,6 +77,9 @@ const RegisterPage = () => {
         phoneNumber: newUser.phoneNumber,
       })
     );
+    const data = response.json();
+    console.log(data);
+
     setNewUser({
       email: "",
       password: "",
@@ -97,7 +118,7 @@ const RegisterPage = () => {
                 name="firstName"
                 value={newUser.firstName}
                 onBlur={onBlurHandler}
-                styleName={invalidInput}
+                stylename={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -106,7 +127,7 @@ const RegisterPage = () => {
                 name="lastName"
                 value={newUser.lastName}
                 onBlur={onBlurHandler}
-                styleName={invalidInput}
+                stylename={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -115,7 +136,7 @@ const RegisterPage = () => {
                 name="phoneNumber"
                 value={newUser.phoneNumber}
                 onBlur={onBlurHandler}
-                styleName={invalidInput}
+                stylename={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -124,7 +145,7 @@ const RegisterPage = () => {
                 name="email"
                 value={newUser.email}
                 onBlur={onBlurHandler}
-                styleName={invalidInput}
+                stylename={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -133,7 +154,7 @@ const RegisterPage = () => {
                 name="password"
                 value={newUser.password}
                 onBlur={onBlurHandler}
-                styleName={invalidInput}
+                stylename={invalidInput}
               />
               <CustomInput
                 type="text"
@@ -142,7 +163,7 @@ const RegisterPage = () => {
                 name="confirmPassword"
                 value={newUser.confirmPassword}
                 onBlur={onBlurHandler}
-                styleName={invalidInput}
+                stylename={invalidInput}
               />
             </div>
             {formIsInvalid && (

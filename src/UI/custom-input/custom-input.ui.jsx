@@ -5,7 +5,7 @@ const CustomInput = ({ handleChange, label, ...otherProps }) => {
     <div className={styles["form-input"]}>
       <label className={styles.label}> {label} </label>
       <input
-        className={`${styles.input} ${otherProps.styleName}`}
+        className={`${styles.input} ${otherProps.stylename}`}
         onChange={handleChange}
         {...otherProps}
       />

@@ -38,16 +38,37 @@ const LoginPage = () => {
 
   const invalidInput = formIsTouched ? `${styles.invalid}` : "";
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setFormIsTouched(true);
     if (user.email.includes("@") && user.password.trim().length > 6) {
       setIsFormValid(true);
+    } else {
+      alert("Incorrect Email or Password!");
+      return;
     }
-    console.log(user);
+    const url =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCQESQ0wHaizaaA8I8x6gBfd2FapnSBkWk";
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: user.email,
+        password: user.password,
+        returnSecureToken: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      alert(" Authentication Failed! ");
+    }
     dispatch(
       userActions.onLogin({ email: user.email, password: user.password })
     );
+    const data = response.json();
+    console.log(data);
+
     setUser({
       email: "",
       password: "",
@@ -78,7 +99,7 @@ const LoginPage = () => {
             value={user.email}
             handleChange={onChangeHandler}
             onBlur={onBlurHandler}
-            styleName={invalidInput}
+            stylename={invalidInput}
           />
           <CustomInput
             label="Password"
@@ -88,7 +109,7 @@ const LoginPage = () => {
             value={user.password}
             handleChange={onChangeHandler}
             onBlur={onBlurHandler}
-            styleName={invalidInput}
+            stylename={invalidInput}
           />
           <div className={styles["remember-user"]}>
             <input type="checkbox" />
